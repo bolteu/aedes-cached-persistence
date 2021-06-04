@@ -27,7 +27,7 @@ function CachedPersistence (opts) {
   this.ready = false
   this.destroyed = false
   this._parallel = parallel()
-  this._trie = new QlobberSub(QlobberOpts)
+  // this._trie = new QlobberSub(QlobberOpts)
   this._waiting = {}
 
   const that = this
@@ -39,19 +39,19 @@ function CachedPersistence (opts) {
   this._onMessage = function onSubMessage (packet, cb) {
     const decoded = JSON.parse(packet.payload)
     const clientId = decoded.clientId
-    for (var i = 0; i < decoded.subs.length; i++) {
-      const sub = decoded.subs[i]
-      sub.clientId = clientId
-      if (packet.topic === newSubTopic) {
-        if (sub.qos > 0) {
-          that._trie.add(sub.topic, sub)
-        } else {
-          that._trie.remove(sub.topic, sub)
-        }
-      } else if (packet.topic === rmSubTopic) {
-        that._trie.remove(sub.topic, sub)
-      }
-    }
+    // for (var i = 0; i < decoded.subs.length; i++) {
+    //   const sub = decoded.subs[i]
+    //   sub.clientId = clientId
+    //   if (packet.topic === newSubTopic) {
+    //     if (sub.qos > 0) {
+    //       that._trie.add(sub.topic, sub)
+    //     } else {
+    //       that._trie.remove(sub.topic, sub)
+    //     }
+    //   } else if (packet.topic === rmSubTopic) {
+    //     that._trie.remove(sub.topic, sub)
+    //   }
+    // }
     const action = packet.topic === newSubTopic ? 'sub_' : 'unsub_'
     var key = clientId + '-' + action
     if (decoded.subs.length > 0) {
@@ -154,14 +154,14 @@ CachedPersistence.prototype._removedSubscriptions = function (client, subs, cb) 
   })
 }
 
-CachedPersistence.prototype.subscriptionsByTopic = function (topic, cb) {
-  if (!this.ready) {
-    this.once('ready', this.subscriptionsByTopic.bind(this, topic, cb))
-    return this
-  }
+// CachedPersistence.prototype.subscriptionsByTopic = function (topic, cb) {
+//   if (!this.ready) {
+//     this.once('ready', this.subscriptionsByTopic.bind(this, topic, cb))
+//     return this
+//   }
 
-  cb(null, this._trie.match(topic))
-}
+//   cb(null, this._trie.match(topic))
+// }
 
 CachedPersistence.prototype.cleanSubscriptions = function (client, cb) {
   const that = this
