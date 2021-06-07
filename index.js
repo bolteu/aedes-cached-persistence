@@ -18,8 +18,6 @@ function CachedPersistence (opts) {
   this.destroyed = false
   this._parallel = parallel()
   this._waiting = {}
-
-  const that = this
 }
 
 inherits(CachedPersistence, EE)
@@ -71,7 +69,7 @@ Object.defineProperty(CachedPersistence.prototype, 'broker', {
   },
   set: function (broker) {
     this._broker = broker
-    this.emit('ready')
+    setImmediate(() => this.emit('ready'));
   }
 })
 
