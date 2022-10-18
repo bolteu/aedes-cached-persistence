@@ -29,6 +29,12 @@ type ExcludedAedesPersistenceFunctions =
   | 'getWill'
   | 'streamWill'
   | 'getClientList'
+  | 'buildClientSharedTopic'
+  | 'parseSharedTopic'
+  | 'storeSharedSubscription'
+  | 'removeSharedSubscription'
+  | 'getSharedTopics'
+  | 'restoreOriginalTopicFromSharedOne'
   | 'destroy';
 
 export class AedesCachedPersistence
