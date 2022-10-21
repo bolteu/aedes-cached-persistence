@@ -15,7 +15,11 @@ class MyPersistence extends CachedPersistence {
       'incomingDelPacket', 'delWill',
       'createRetainedStream',
       'outgoingStream', 'subscriptionsByClient',
-      'getWill', 'streamWill', 'getClientList', 'destroy']
+      'getWill', 'streamWill', 'getClientList',
+      'buildClientSharedTopic', 'parseSharedTopic', 'storeSharedSubscription',
+      'removeSharedSubscription', 'getSharedTopics',
+      'restoreOriginalTopicFromSharedOne',
+      'destroy']
     methods.forEach((key) => {
       this[key] = this.backend[key].bind(this.backend)
     })
