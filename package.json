@@ -1,6 +1,6 @@
 {
   "name": "aedes-cached-persistence",
-  "version": "9.0.1",
+  "version": "9.0.100",
   "description": "Abstract class to write an Aedes persistence with in-process caching of subscriptions",
   "main": "index.js",
   "types": "types/index.d.ts",
@@ -55,7 +55,7 @@
     "tsd": "^0.20.0"
   },
   "dependencies": {
-    "aedes-persistence": "9.1.4",
+    "aedes-persistence": "9.1.100",
     "fastparallel": "^2.4.1",
     "multistream": "^4.1.0",
     "qlobber": "^7.0.0"
