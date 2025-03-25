@@ -1,7 +1,5 @@
 # aedes-cached-persistence
 ![](https://github.com/moscajs/aedes-cached-persistence/workflows/ci.yml/badge.svg)
-[![Dependencies Status](https://david-dm.org/moscajs/aedes-cached-persistence/status.svg)](https://david-dm.org/moscajs/aedes-cached-persistence)
-[![devDependencies Status](https://david-dm.org/moscajs/aedes-cached-persistence/dev-status.svg)](https://david-dm.org/moscajs/aedes-cached-persistence?type=dev)
 <br/>
 [![Known Vulnerabilities](https://snyk.io/test/github/moscajs/aedes-cached-persistence/badge.svg)](https://snyk.io/test/github/moscajs/aedes-cached-persistence)
 [![Coverage Status](https://coveralls.io/repos/moscajs/aedes-cached-persistence/badge.svg?branch=master&service=github)](https://coveralls.io/github/moscajs/aedes-cached-persistence?branch=master)
@@ -75,7 +73,7 @@ A persistence needs to pass all tests defined in
 in the following manner:
 
 ```js
-var test = require('tape').test
+var test = require('node:test')
 var myperst = require('./')
 var abs = require('aedes-cached-persistence/abstract')
 
@@ -89,7 +87,7 @@ If you require some async stuff before returning, a callback is also
 supported:
 
 ```js
-var test = require('tape').test
+var test = require('node:test')
 var myperst = require('./')
 var abs = require('aedes-persistence/abstract')
 var clean = require('./clean') // invented module
